@@ -1,0 +1,13 @@
+:root {
+    --box-fill:#e8f0fe;
+    --box-border:#1a73e8;
+    --box-text:#1a1a1a;
+    --canvas-bg: #fafafa;
+}
+
+.theme-dark {
+    --box-fill:#1e2a3a;
+    --box-border:#8ab4f8;
+    --box-text:#f1f1f1;
+    --canvas-bg: #121212;
+}
