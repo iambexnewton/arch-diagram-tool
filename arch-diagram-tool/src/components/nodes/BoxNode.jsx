@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { Handle, Position, useReactFlow } from 'reactflow';
 //  import { Handle, Position, useReactFlow } from '@xyflow/react';
   import '@xyflow/react/dist/style.css';
@@ -8,10 +8,17 @@ import { Handle, Position, useReactFlow } from 'reactflow';
 export default function BoxNode({ id, data }) {
     const { setNodes } = useReactFlow();
     const text = data.label ?? 'new box comp';
+    const ref = useRef(null)
 
-    const handleChange = useCallback(
+    useEffect(()=>{
+        if(ref.current && document.activeElement !== ref.current) {
+            ref.current.innerText = text
+        } 
+    }, [text])
+
+    const handleInput = useCallback(
         (e) => {
-            const value = e.target.value;
+            const value = e.target.innerText
             setNodes((nodes) =>
                 nodes.map((node) =>
                     node.id === id ? { ...node, data: { ...node.data, label: value } } : node
@@ -27,14 +34,20 @@ export default function BoxNode({ id, data }) {
             borderRadius: 8,
             padding: "10px 14px",
             minWidth: 140,
+            width: 'fit-content',
+            maxWidth: 320
         }}>
 
             <Handle type="target"
                 position={Position.Top}
             />
-            <input
+            <div
+            ref={ref}
+            contentEditable
+            suppressContentEditableWarning
+            onInput={handleInput}
                 value={text}
-                onChange={handleChange}
+
                 style={{
                     width: "100%",
                     border: "none",
@@ -43,7 +56,10 @@ export default function BoxNode({ id, data }) {
                     fontFamily: "inherit",
                     fontSize: 14,
                     textAlign: "center",
-                    outline: "none"
+                    outline: "none",
+                    whiteSpace: 'pre-wrap',
+                    wordBreak: "break-word",
+                    minWidth: 20
                 }} />
                     <Handle type="source"
                 position={Position.Bottom}
