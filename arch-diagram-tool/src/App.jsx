@@ -22,15 +22,11 @@ const initialNodes = [
 
   }
 ]
-const initialEdges = [{ id: "e1-2", source: "1", target: "2" }];
 function Canvas() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [theme, setTheme] = useState("");
 
-  const handleInit = useCallback(() => {
-    setEdges(initialEdges)
-  }, [setEdges])
 
   const onConnect = useCallback(
     (params) => setEdges((eds) => addEdge(params, eds)), [setEdges])
@@ -67,7 +63,7 @@ function Canvas() {
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
-        onInit={handleInit}
+        // onInit={handleInit}
         nodeTypes={nodeTypes}
         nodesDraggable={true}
         fitView
