@@ -2,7 +2,11 @@ import { useCallback, useState } from "react";
 import ReactFlow, { Background, Controls, addEdge, useNodesState, useEdgesState, ReactFlowProvider } from "reactflow";
 import { WorkflowHeader } from './components/WorkflowHeader.tsx'
 import { nodeTypes } from "./components/nodes/index.js"
+import DeletableEdge from "./components/edges/DeleteableEdge.jsx";
 
+
+
+const edgeTypes = {deletable: DeletableEdge}
 
 const initialNodes = [
   {
@@ -29,7 +33,7 @@ function Canvas() {
 
 
   const onConnect = useCallback(
-    (params) => setEdges((eds) => addEdge(params, eds)), [setEdges])
+    (params) => setEdges((eds) => addEdge({...params, type: "deletable"}, eds), [setEdges]))
 
   return (
     <div 
@@ -65,6 +69,7 @@ function Canvas() {
         onConnect={onConnect}
         // onInit={handleInit}
         nodeTypes={nodeTypes}
+        edgeTypes={edgeTypes}
         nodesDraggable={true}
         fitView
       />

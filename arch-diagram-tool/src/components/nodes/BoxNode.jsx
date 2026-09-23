@@ -1,21 +1,25 @@
 import { useCallback, useEffect, useRef } from "react";
 import { Handle, Position, useReactFlow } from 'reactflow';
-//  import { Handle, Position, useReactFlow } from '@xyflow/react';
-  import '@xyflow/react/dist/style.css';
+import '@xyflow/react/dist/style.css';
 
 
 
-export default function BoxNode({ id, data }) {
-    const { setNodes } = useReactFlow();
+export default function BoxNode({ id, data, selected }) {
+    const { setNodes, deleteElements } = useReactFlow();
     const text = data.label ?? 'new box comp';
     const ref = useRef(null)
 
-    useEffect(()=>{
-        if(ref.current && document.activeElement !== ref.current) {
+    useEffect(() => {
+        if (ref.current && document.activeElement !== ref.current) {
             ref.current.innerText = text
-        } 
+        }
     }, [text])
 
+
+    const handleDelete = useCallback((e) => {
+        e?.stopPropagation?.()
+        deleteElements({ nodes: [{ id }] }, [id, deleteElements])
+    })
     const handleInput = useCallback(
         (e) => {
             const value = e.target.innerText
@@ -26,7 +30,6 @@ export default function BoxNode({ id, data }) {
             )
         }, [id, setNodes]
     );
-
     return (
         <div style={{
             background: "var(--box-fill)",
@@ -37,15 +40,34 @@ export default function BoxNode({ id, data }) {
             width: 'fit-content',
             maxWidth: 320
         }}>
+            {selected && (
+                <button className="nodrag"
+                    onClick={handleDelete}
+                    title="Delete"
+                    style={{
+                        position: "absolute",
+                        top: -12,
+                        right: -12,
+                        width: 28,
+                        height: 28,
+                        borderRadius: "50%",
+                        border: "1px solid var(--box-border)",
+                        background: "white",
+                        cursor: "pointer"
+                    }}
 
+                >
+                    &#128465;
+                </button>
+            )}
             <Handle type="target"
                 position={Position.Top}
             />
             <div
-            ref={ref}
-            contentEditable
-            suppressContentEditableWarning
-            onInput={handleInput}
+                ref={ref}
+                contentEditable
+                suppressContentEditableWarning
+                onInput={handleInput}
                 value={text}
 
                 style={{
@@ -61,7 +83,7 @@ export default function BoxNode({ id, data }) {
                     wordBreak: "break-word",
                     minWidth: 20
                 }} />
-                    <Handle type="source"
+            <Handle type="source"
                 position={Position.Bottom}
             />
         </div>
