@@ -9,7 +9,7 @@ export function WorkflowHeader({ title, subtitle, imageUrl }: WorkflowHeaderProp
     <div style={{
       position: 'absolute',
       top: '20px',
-      left: '20px',
+      left: '20%',
       zIndex: 4, 
       pointerEvents: 'auto',
       background: 'rgba(255, 255, 255, 0.9)',

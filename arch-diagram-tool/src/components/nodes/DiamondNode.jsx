@@ -4,7 +4,7 @@ import '@xyflow/react/dist/style.css';
 
 
 
-export default function BoxNode({ id, data, selected }) {
+export default function DiamondNode({ id, data, selected }) {
     const { setNodes, deleteElements } = useReactFlow();
     const text = data.label ?? 'new box comp';
     const ref = useRef(null)
@@ -33,7 +33,7 @@ export default function BoxNode({ id, data, selected }) {
   
     return (
         <div style={{
-            background: "var(--box-fill)",
+            background: "var(--diamond-fill)",
             border: "2px solid var(--box-border)",
             borderRadius: 8,
             padding: "10px 14px",

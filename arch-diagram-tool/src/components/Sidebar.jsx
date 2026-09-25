@@ -1,7 +1,8 @@
-import { nodeTypes } from "./nodes"
+import { nodeTypes } from "./nodes/index.js"
 
 const palletteItems = [
     { type: "box", label: 'box' },
+    { type: "diamond", label: 'diamond' },
 ]
 export default function Sidebar() {
     const onDragStart = (event, nodeType) => {
@@ -30,8 +31,8 @@ export default function Sidebar() {
                     draggable
                     onDragStart={(e) => onDragStart(e, item.type)}
                     style={{
-                        background: "var(--box-fill)",
-                        border: "2px solid var(--box-border)",
+                        background: `var(--${item.type}-fill)`,
+                        border: ` 2px solid var(--${item.type}-border)`,
                         borderRadius: 8,
                         padding: "10px 12px",
                         fontSize: 13,

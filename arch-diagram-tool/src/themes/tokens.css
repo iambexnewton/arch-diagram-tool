@@ -1,4 +1,6 @@
 :root {
+     --canvas-bg: #fafafa;
+
     --border-radius-xs: 4px;
     --border-radius-s: 6px;
     --border-radius-m: 8px;
@@ -7,12 +9,15 @@
     --border-width-s: 1px;
     --border-width-m: 2px;
     --border-width-l: 3px;
-    
 
     --box-fill:#e8f0fe;
     --box-border:#1a73e8;
     --box-text:#1a1a1a;
-    --canvas-bg: #fafafa;
+
+    --diamond-fill: #e317ba;
+    --diamond-border:#1a73e8;
+    --diamond-text:#1a1a1a;
+
 }
 
 .theme-brand1 {
@@ -20,6 +25,10 @@
     --box-border:#8ab4f8;
     --box-text:#f1f1f1;
     --canvas-bg: #121212;
+
+    --diamond-fill: #blue;
+    --diamond-border:#black;
+    --diamond-text:#1a1a1a;
 }
 
 .theme-brand2 {
@@ -27,4 +36,8 @@
     --box-border:#f1f1f1;
     --box-text:#f1f1f1;
     --canvas-bg: #121212;
+
+    --diamond-fill: #e317ba;
+    --diamond-border:#1a73e8;
+    --diamond-text:#1a1a1a;
 }
