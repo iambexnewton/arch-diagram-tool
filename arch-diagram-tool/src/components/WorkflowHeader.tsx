@@ -7,16 +7,17 @@ interface WorkflowHeaderProps {
 export function WorkflowHeader({ title, subtitle, imageUrl }: WorkflowHeaderProps) {
   return (
     <div style={{
+  
       position: 'absolute',
       top: '20px',
       left: '16%',
       zIndex: 4, 
       pointerEvents: 'auto',
-      background: 'rgba(255, 255, 255, 0.9)',
-      padding: '12px 20px',
-      borderRadius: '8px',
+background: 'var(--header-background)',
+      padding: '16px 22px',
+      borderRadius: 'var(--border-radius-m)',
       boxShadow: '0 4px 6px rgba(0, 0, 0, 0.05)',
-      border: '1px solid #e2e8f0',
+      // border: '1px solid #e2e8f0',
       fontFamily: 'sans-serif'
     }}>
  {imageUrl && (
@@ -26,14 +27,18 @@ export function WorkflowHeader({ title, subtitle, imageUrl }: WorkflowHeaderProp
           style={{
             width: '40px',
             height: '40px',
-            borderRadius: '6px', 
+            borderRadius: 'var(--border-radius-s)', 
             objectFit: 'cover',
             border: '1px solid #edf2f7'
           }} 
         />
       )}
-      <h2 style={{ margin: 0, fontSize: '18px', color: '#1a202c' }}>{title}</h2>
-      {subtitle && <p style={{ margin: '4px 0 0 0', fontSize: '13px', color: '#718096' }}>{subtitle}</p>}
+      <h2 
+      style={{ 
+        margin: 0, 
+        fontSize: '18px', 
+        color: 'var(--header-text)' }}>{title}</h2>
+      {subtitle && <p style={{ margin: '4px 0 0 0', fontSize: '13px', color: 'var(--header-text)'}}>{subtitle}</p>}
     </div>
   );
 }

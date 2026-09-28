@@ -36,7 +36,11 @@
 
 /* hillarys */
 .theme-brand1 {
-    --canvas-bg: #ffffff;
+    --canvas-bg: #f4f6f7;
+
+
+    --header-background: #ec0142;
+    --header-text: #ffffff;
 
     --border-radius-xs: 4px;
     --border-radius-s: 6px;
@@ -47,12 +51,12 @@
     --border-width-m: 2px;
     --border-width-l: 3px;
 
-    --box-fill: #f4f6f7;
-    --box-border: #343a3f;
-    --box-text: #3e444e;
+    --box-fill: #3b4c59;
+    --box-border: #657b8c;
+    --box-text: #ffffff;
 
-    --diamond-fill: #F1F4FB;
-    --diamond-border: #343a3f;
+    --diamond-fill: #d3e0e2;
+    --diamond-border: #657b8c;
     --diamond-text: #3e444e;
 }
 

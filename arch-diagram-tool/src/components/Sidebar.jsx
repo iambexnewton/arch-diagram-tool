@@ -21,10 +21,13 @@ export default function Sidebar() {
                 background: "#fff",
                 display: "flex",
                 flexDirection: "column",
-                gap: 10
+                gap: 30
             }}>
-            <div style={{ fontWeight: 600, fontSize: 13, marginBottom: 4 }}>
+            <div style={{ fontWeight: 600, fontSize: 20, alignSelf: "center", textDecoration: 'underline'}}>
                 Components
+            </div>
+             <div style={{ fontWeight: 200, fontSize: 16, marginBottom: 4 , alignSelf: "center", }}>
+              Drag the components below on to the canvas
             </div>
 
             {palletteItems.map((item) => (
@@ -36,6 +39,7 @@ export default function Sidebar() {
                         justifyContent: "center",
                         cursor: "grab",
                         userSelect: "none",
+
                     }}
                 >
                     {item.type === 'diamond' ?

@@ -55,11 +55,13 @@ function Canvas() {
 
   return (
     <div
-           className={theme}
+      className={theme}
       style={{ width: "100vw", height: "100vh", display: "flex", flexDirection: "column", background: "var(--canvas-bg)" }}>
       <WorkflowHeader
+          className={theme}
         title="Onboarding"
         subtitle="v1.2.0 - Active"
+
         // imageUrl="./assets/react.svg"
       />
 
@@ -79,7 +81,7 @@ function Canvas() {
               zIndex: 10,
               top: 20,
               right: 100,
-              padding: "6px 10px"
+              padding: "6px 12px",
             }}
           >
             <option value=''>Default Theme</option>
