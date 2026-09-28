@@ -4,39 +4,15 @@ import { WorkflowHeader } from './components/WorkflowHeader.tsx'
 import { nodeTypes } from "./components/nodes/index.js"
 import DeletableEdge from "./components/edges/DeleteableEdge.jsx";
 import Sidebar from "./components/Sidebar.jsx";
+import { palletteItems } from "./components/Sidebar.jsx";
 
 
 
 const edgeTypes = { deletable: DeletableEdge }
 
-const initialNodes = [
-  {
-    id: "1",
-    type: "box",
-    position: { x: 100, y: 100 },
-    data: { label: "BOX" },
-    draggable: true
+const initialNodes = []
 
-  },
-  {
-    id: "2",
-    type: "box",
-    position: { x: 100, y: 250 },
-    data: { label: "Database" },
-    draggable: true
-
-  },
-    {
-    id: "3",
-    type: "diamond",
-    position: { x: 100, y: 300 },
-    data: { label: "DIAMOND" },
-    draggable: true
-
-  }
-]
-
-let idCounter = 3;
+ let idCounter = 0;
 
 function Canvas() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
@@ -63,11 +39,14 @@ function Canvas() {
       y: event.clientY,
     })
 
+
+    const palletteItem = palletteItems.find((item) => item.type === type)
+    const label = palletteItem?.label ?? 'component'
     const newNode = {
       id: `${idCounter++}`,
       type,
       position,
-      data: { label: "new component", }
+      data: { label}
     }
     setNodes((nodes) => nodes.concat(newNode))
   }, [screenToFlowPosition, setNodes])
@@ -76,18 +55,19 @@ function Canvas() {
 
   return (
     <div
+           className={theme}
       style={{ width: "100vw", height: "100vh", display: "flex", flexDirection: "column", background: "var(--canvas-bg)" }}>
       <WorkflowHeader
-        title="Project Onboarding Pipeline"
+        title="Onboarding"
         subtitle="v1.2.0 - Active"
-        imageUrl="./assets/react.svg"
+        // imageUrl="./assets/react.svg"
       />
 
       <div style={{ display: "flex", flex: 1, minHeight: 0 }}>
         <Sidebar />
 
         <div ref={wrapperRef}
-          className={theme}
+   
           style={{ flex: 1, height: "100%", background: "var(--canvas-bg)" }}>
 
 
@@ -97,7 +77,7 @@ function Canvas() {
             style={{
               position: "absolute",
               zIndex: 10,
-              top: 12,
+              top: 20,
               right: 100,
               padding: "6px 10px"
             }}

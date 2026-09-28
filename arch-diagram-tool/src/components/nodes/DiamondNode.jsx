@@ -15,7 +15,7 @@ export default function DiamondNode({ id, data, selected }) {
         }
     }, [text])
 
-      const handleChange = useCallback(
+    const handleChange = useCallback(
         (e) => {
             const value = e.target.value
             setNodes((nodes) =>
@@ -30,16 +30,24 @@ export default function DiamondNode({ id, data, selected }) {
         e?.stopPropagation?.()
         deleteElements({ nodes: [{ id }] }, [id, deleteElements])
     })
-  
+
     return (
+
         <div style={{
-            background: "var(--diamond-fill)",
-            border: "2px solid var(--box-border)",
-            borderRadius: 8,
-            padding: "10px 14px",
-            minWidth: 140,
-            width: 'fit-content',
-            maxWidth: 320
+            position: "relative", width: 130, height: 130
+            // width: "100%",
+            // height: "100%",
+            // background: "var(--diamond-fill)",
+            // border: "solid var(--border-width-s) solid var(--border-radius-xs)",
+
+            // clipPath: "polygon(50%, 0%, 100% 50%, 50% 100%,0% 50%)",
+            // display: "flex",
+            // alignItems: "center",
+
+            // padding: "10px 14px",
+            // minWidth: 140,
+            // width: 'fit-content',
+            // maxWidth: 320
         }}>
             {selected && (
                 <button className="nodrag"
@@ -47,12 +55,13 @@ export default function DiamondNode({ id, data, selected }) {
                     title="Delete"
                     style={{
                         position: "absolute",
-                        top: -12,
-                        right: -12,
+                        top: 10,
+                        right: 20,
+                        zIndex: 10,
                         width: 28,
                         height: 28,
                         borderRadius: "50%",
-                        border: "1px solid var(--box-border)",
+                        border: "1px solid var(--diamond-border)",
                         background: "white",
                         cursor: "pointer"
                     }}
@@ -61,33 +70,67 @@ export default function DiamondNode({ id, data, selected }) {
                     &#128465;
                 </button>
             )}
-            <Handle type="target"
-                position={Position.Top}
-            />
-            <input
-                ref={ref}
-                contentEditable
-                suppressContentEditableWarning
-                // onInput={handleInput}
-                onChange={handleChange}
-                value={text}
+            <div style={{
+                position: "absolute",
+                inset: 0,
+                background: "var(--diamond-border)",
+                clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)",
+                zIndex: 0
 
+            }}/>
+                <div style={{
+                    position: "absolute",
+                    inset: 2,
+                    background: "var(--diamond-fill)",
+                    clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    zIndex: 1
+                }}>
+
+                    <input
+                        ref={ref}
+                        contentEditable
+                        suppressContentEditableWarning
+                        // onInput={handleInput}
+                        onChange={handleChange}
+                        value={text}
+
+                        style={{
+                            width: "55%",
+                            border: "none",
+                            background: "transparent",
+                            color: "var(--diamond-text)",
+                            fontFamily: "inherit",
+                            fontSize: 14,
+                            textAlign: "center",
+                            outline: "none",
+                            whiteSpace: 'pre-wrap',
+                            wordBreak: "break-word",
+                            minWidth: 20,
+                            cursor: text,
+                        }} />
+                </div>
+                <Handle type="target"
+                    position={Position.Top}
                 style={{
-                    width: "100%",
-                    border: "none",
-                    background: "transparent",
-                    color: "var(--box-text)",
-                    fontFamily: "inherit",
-                    fontSize: 14,
-                    textAlign: "center",
-                    outline: "none",
-                    whiteSpace: 'pre-wrap',
-                    wordBreak: "break-word",
-                    minWidth: 20,
-                    cursor: text,
-                }} />
+                    //     background: "black",
+                    //     width: 8,
+                    //     height: 8,
+                         zIndex: 5
+                     }}
+                />
+         
+
             <Handle type="source"
                 position={Position.Bottom}
+                style={{
+                    // background: "black",
+                    // width: 8,
+                    // height: 8,
+                     zIndex: 5
+                }}
             />
         </div>
 

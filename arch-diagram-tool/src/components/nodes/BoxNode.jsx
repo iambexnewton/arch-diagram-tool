@@ -34,8 +34,8 @@ export default function BoxNode({ id, data, selected }) {
     return (
         <div style={{
             background: "var(--box-fill)",
-            border: "2px solid var(--box-border)",
-            borderRadius: 8,
+           border: "solid var( --border-width-s) var( --box-border)",
+            borderRadius: "var(--border-radius-xs)",
             padding: "10px 14px",
             minWidth: 140,
             width: 'fit-content',

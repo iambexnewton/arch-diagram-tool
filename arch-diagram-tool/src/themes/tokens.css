@@ -1,5 +1,42 @@
+
+/* wpp */
 :root {
-     --canvas-bg: #fafafa;
+
+    /* --canvas-bg: #eee8ff;
+    --canvas-bg: #e6c9fd;
+    --canvas-bg: #cab8ff;
+    --canvas-bg: #850858;
+    --canvas-bg: #5e00b5;
+    --canvas-bg: #47039b;
+    --canvas-bg: #2f0069;
+    --canvas-bg: #0b001c; */
+
+
+    --canvas-bg: #f8f9fb;
+
+    --border-radius-xs: 4px;
+    --border-radius-s: 6px;
+    --border-radius-m: 8px;
+    --border-radius-l: 12px;
+
+
+    --border-width-s: 1px;
+    --border-width-m: 2px;
+    --border-width-l: 3px;
+
+    --box-fill: #eee8ff;
+    --box-border: #cab8ff;
+    --box-text: #121619;
+
+    --diamond-fill: #8508e8;
+    --diamond-border: #47039b;
+    --diamond-text: #e8f0fe;
+
+}
+
+/* hillarys */
+.theme-brand1 {
+    --canvas-bg: #ffffff;
 
     --border-radius-xs: 4px;
     --border-radius-s: 6px;
@@ -10,34 +47,34 @@
     --border-width-m: 2px;
     --border-width-l: 3px;
 
-    --box-fill:#e8f0fe;
-    --box-border:#1a73e8;
-    --box-text:#1a1a1a;
+    --box-fill: #f4f6f7;
+    --box-border: #343a3f;
+    --box-text: #3e444e;
 
-    --diamond-fill: #e317ba;
-    --diamond-border:#1a73e8;
-    --diamond-text:#1a1a1a;
-
+    --diamond-fill: #F1F4FB;
+    --diamond-border: #343a3f;
+    --diamond-text: #3e444e;
 }
 
-.theme-brand1 {
-    --box-fill:#1e2a3a;
-    --box-border:#8ab4f8;
-    --box-text:#f1f1f1;
-    --canvas-bg: #121212;
-
-    --diamond-fill: #blue;
-    --diamond-border:#black;
-    --diamond-text:#1a1a1a;
-}
-
+/* luxflex */
 .theme-brand2 {
-    --box-fill:#8ab4f8;
-    --box-border:#f1f1f1;
-    --box-text:#f1f1f1;
     --canvas-bg: #121212;
 
+    --border-radius-xs: 4px;
+    --border-radius-s: 6px;
+    --border-radius-m: 8px;
+    --border-radius-l: 12px;
+
+    --border-width-s: 1px;
+    --border-width-m: 2px;
+    --border-width-l: 3px;
+
+    --box-fill: #596A77;
+    --box-border: #343a3f;
+    --box-text: #ffffff;
+
+
     --diamond-fill: #e317ba;
-    --diamond-border:#1a73e8;
-    --diamond-text:#1a1a1a;
+    --diamond-border: #1a73e8;
+    --diamond-text: #1a1a1a;
 }
