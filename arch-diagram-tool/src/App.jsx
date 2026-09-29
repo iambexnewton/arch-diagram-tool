@@ -5,6 +5,8 @@ import { nodeTypes } from "./components/nodes/index.js"
 import DeletableEdge from "./components/edges/DeleteableEdge.jsx";
 import Sidebar from "./components/Sidebar.jsx";
 import { palletteItems } from "./components/Sidebar.jsx";
+import {exportToPng, exportToSvg} from "./utils/exportImage.js"
+
 
 
 
@@ -88,8 +90,30 @@ function Canvas() {
             <option value='theme-brand1'>Brand 1 Theme</option>
             <option value='theme-brand2'>Brand 2 Theme</option>
           </select>
+          <button   style={{
+              position: "absolute",
+              zIndex: 10,
+              top: 20,
+              right: 260,
+              padding: "6px 12px",
+            }}
+            onClick={()=> exportToSvg(nodes)}>
+            export SVG
+          </button>
+            <button   style={{
+              position: "absolute",
+              zIndex: 10,
+              top: 20,
+              right: 380,
+              padding: "6px 12px",
+            }}
+            onClick={()=> exportToPng(nodes)}>
+            export PNG
+          </button>
 
           <ReactFlow
+
+          id={"react-flow_viewport"}
             nodes={nodes}
             edges={edges}
             onNodesChange={onNodesChange}

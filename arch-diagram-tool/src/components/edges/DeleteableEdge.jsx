@@ -26,10 +26,16 @@ export default function DeletableEdge({
         e?.stopPropagnation?.();
         deleteElements({ edges: [{ id }] }, [id, deleteElements])
     }
+
+    const edgeStyle= {
+        stroke: "var(--box-border)",
+        strokeWidth: 2,
+    }
+
     return (
         <>
             <BaseEdge
-                id={id} path={edgePath} style={style} markerEnd={markerEnd} />
+                id={id} path={edgePath} style={edgeStyle} markerEnd={markerEnd} />
             {selected && (
                 <EdgeLabelRenderer>
                     <button
