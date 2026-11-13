@@ -32,6 +32,10 @@
     --diamond-border: #47039b;
     --diamond-text: #e8f0fe;
 
+      --database-fill: #d3e0e2;
+    --database-border: #657b8c;
+    --database-text: #3e444e;
+
 }
 
 /* hillarys */
@@ -58,6 +62,10 @@
     --diamond-fill: #d3e0e2;
     --diamond-border: #657b8c;
     --diamond-text: #3e444e;
+
+    --database-fill: #d3e0e2;
+    --database-border: #657b8c;
+    --database-text: #3e444e;
 }
 
 /* luxflex */
@@ -81,4 +89,8 @@
     --diamond-fill: #e317ba;
     --diamond-border: #1a73e8;
     --diamond-text: #1a1a1a;
+
+      --database-fill: #d3e0e2;
+    --database-border: #657b8c;
+    --database-text: #3e444e;
 }

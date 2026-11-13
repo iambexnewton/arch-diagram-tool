@@ -33,22 +33,7 @@ export default function DiamondNode({ id, data, selected }) {
 
     return (
 
-        <div style={{
-            position: "relative", width: 130, height: 130
-            // width: "100%",
-            // height: "100%",
-            // background: "var(--diamond-fill)",
-            // border: "solid var(--border-width-s) solid var(--border-radius-xs)",
-
-            // clipPath: "polygon(50%, 0%, 100% 50%, 50% 100%,0% 50%)",
-            // display: "flex",
-            // alignItems: "center",
-
-            // padding: "10px 14px",
-            // minWidth: 140,
-            // width: 'fit-content',
-            // maxWidth: 320
-        }}>
+        <div style={{ position: "relative", width: 130, height: 130 }}>
             {selected && (
                 <button className="nodrag"
                     onClick={handleDelete}
@@ -65,7 +50,6 @@ export default function DiamondNode({ id, data, selected }) {
                         background: "white",
                         cursor: "pointer"
                     }}
-
                 >
                     &#128465;
                 </button>
@@ -76,7 +60,6 @@ export default function DiamondNode({ id, data, selected }) {
                 background: "var(--diamond-border)",
                 clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)",
                 zIndex: 0
-
             }}/>
                 <div style={{
                     position: "absolute",
@@ -96,7 +79,6 @@ export default function DiamondNode({ id, data, selected }) {
                         // onInput={handleInput}
                         onChange={handleChange}
                         value={text}
-
                         style={{
                             width: "55%",
                             border: "none",
@@ -110,27 +92,18 @@ export default function DiamondNode({ id, data, selected }) {
                             wordBreak: "break-word",
                             minWidth: 20,
                             cursor: text,
-                        }} />
+                        }}
+                    />
                 </div>
                 <Handle type="target"
                     position={Position.Top}
-                style={{
-                    //     background: "black",
-                    //     width: 8,
-                    //     height: 8,
-                         zIndex: 5
-                     }}
+                    style={{ zIndex: 5 }}
                 />
          
 
             <Handle type="source"
                 position={Position.Bottom}
-                style={{
-                    // background: "black",
-                    // width: 8,
-                    // height: 8,
-                     zIndex: 5
-                }}
+                style={{ zIndex: 5 }}
             />
         </div>
 

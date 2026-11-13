@@ -34,7 +34,7 @@ export default function BoxNode({ id, data, selected }) {
     return (
         <div style={{
             background: "var(--box-fill)",
-           border: "solid var( --border-width-s) var( --box-border)",
+            border: "solid var(--border-width-s) var(--box-border)",
             borderRadius: "var(--border-radius-xs)",
             padding: "10px 14px",
             minWidth: 140,
@@ -56,7 +56,6 @@ export default function BoxNode({ id, data, selected }) {
                         background: "white",
                         cursor: "pointer"
                     }}
-
                 >
                     &#128465;
                 </button>
@@ -71,7 +70,6 @@ export default function BoxNode({ id, data, selected }) {
                 // onInput={handleInput}
                 onChange={handleChange}
                 value={text}
-
                 style={{
                     width: "100%",
                     border: "none",
@@ -85,7 +83,8 @@ export default function BoxNode({ id, data, selected }) {
                     wordBreak: "break-word",
                     minWidth: 20,
                     cursor: text,
-                }} />
+                }}
+            />
             <Handle type="source"
                 position={Position.Bottom}
             />

@@ -8,8 +8,6 @@ import { palletteItems } from "./components/Sidebar.jsx";
 import {exportToPng, exportToSvg} from "./utils/exportImage.js"
 
 
-
-
 const edgeTypes = { deletable: DeletableEdge }
 
 const initialNodes = []

@@ -3,6 +3,7 @@ import { nodeTypes } from "./nodes/index.js"
 export const palletteItems = [
     { type: "box", label: 'Box' },
     { type: "diamond", label: 'Diamond' },
+    { type: "database", label: 'Database' },
 ]
 
 export default function Sidebar() {
@@ -23,11 +24,11 @@ export default function Sidebar() {
                 flexDirection: "column",
                 gap: 30
             }}>
-            <div style={{ fontWeight: 600, fontSize: 20, alignSelf: "center", textDecoration: 'underline'}}>
+            <div style={{ fontWeight: 600, fontSize: 20, alignSelf: "center", textDecoration: 'underline' }}>
                 Components
             </div>
-             <div style={{ fontWeight: 200, fontSize: 16, marginBottom: 4 , alignSelf: "center", }}>
-              Drag the components below on to the canvas
+            <div style={{ fontWeight: 200, fontSize: 16, marginBottom: 4, alignSelf: "center" }}>
+                Drag the components below on to the canvas
             </div>
 
             {palletteItems.map((item) => (
@@ -39,7 +40,6 @@ export default function Sidebar() {
                         justifyContent: "center",
                         cursor: "grab",
                         userSelect: "none",
-
                     }}
                 >
                     {item.type === 'diamond' ?
@@ -49,7 +49,6 @@ export default function Sidebar() {
                                 inset: 0,
                                 background: "var(--diamond-border)",
                                 clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)",
-
                             }} />
                             <div style={{
                                 position: "absolute",
@@ -59,26 +58,46 @@ export default function Sidebar() {
                                 display: "flex",
                                 alignItems: "center",
                                 justifyContent: "center",
-
-
                             }}>
-                                <span style={{ fontSize: 11, textAlign: "center", color: "var(--diamond-text)",}}>   {item.label}</span>
+                                <span style={{ fontSize: 11, textAlign: "center", color: "var(--diamond-text)" }}>   {item.label}</span>
                             </div>
 
                         </div>
-                        : <div style={{
+
+                        :
+                        item.type === 'box' ? <div style={{
                             width: "100%",
                             background: `var(--${item.type}-fill)`,
-                            border: ` 2px solid var(--${item.type}-border)`,
+                            border: `2px solid var(--${item.type}-border)`,
                             borderRadius: 8,
                             padding: "10px 12px",
                             fontSize: 13,
                             textAlign: "center",
                             color: "var(--box-text)",
-
                         }}>
                             {item.label}
-                        </div>
+                        </div> :
+
+                            <div style={{ display: "flex", flexDirection: "column", width: "100%"}}>
+                                {[0, 1, 2].map((i) => (
+                                    <div
+                                        key={i}
+                                        style={{ width: "100%", 
+                                            minHeight: 34, 
+                                            display: "flex", 
+                                            alignItems: "center", 
+                                            justifyContent: "center",
+                                            background: "var(--box-fill)", 
+                                            border: "solid var(--border-width-s) var(--box-border)", 
+                                            borderRadius: "var(--border-radius-xs)", }}
+                                    >
+                                        {i === 1 ? item.label : null}
+                                    </div> 
+                              )  )}
+
+
+                            </div>
+
                     }
 
                 </div>
