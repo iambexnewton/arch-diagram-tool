@@ -1,5 +1,5 @@
 import { useCallback, useState, useRef } from "react";
-import ReactFlow, { Background, Controls, addEdge, useNodesState, useEdgesState, ReactFlowProvider, useReactFlow } from "reactflow";
+import ReactFlow, { Background, Controls, addEdge, useNodesState, useEdgesState, ReactFlowProvider, useReactFlow, MarkerType } from "reactflow";
 import { WorkflowHeader } from './components/WorkflowHeader.tsx'
 import { nodeTypes } from "./components/nodes/index.js"
 import DeletableEdge from "./components/edges/DeleteableEdge.jsx";
@@ -7,7 +7,7 @@ import Sidebar from "./components/Sidebar.jsx";
 import { palletteItems } from "./components/Sidebar.jsx";
 import { exportToPng, exportToSvg } from "./utils/exportImage.js"
 
-import { templates } from "./templates/index.js";
+import { templates, arrow } from "./templates/index.js";
 
 
 const edgeTypes = { deletable: DeletableEdge }
@@ -35,7 +35,7 @@ function Canvas() {
   }
 
   const onConnect = useCallback(
-    (params) => setEdges((eds) => addEdge({ ...params, type: "deletable" }, eds), [setEdges]))
+    (params) => setEdges((eds) => addEdge({ ...params, type: "deletable", markerEnd: arrow}, eds), [setEdges]))
 
   const onDragOver = useCallback((event) => {
     event.preventDefault();
@@ -56,7 +56,7 @@ function Canvas() {
     const palletteItem = palletteItems.find((item) => item.type === type)
     const label = palletteItem?.label ?? 'component'
     const newNode = {
-      id: `n-${crypto.randomUUID}`,
+      id: `n-${(crypto.randomUUID())}`,
       type,
       position,
       data: { label }

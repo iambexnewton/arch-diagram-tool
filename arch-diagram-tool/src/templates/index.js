@@ -1,6 +1,6 @@
 import { MarkerType } from "reactflow";
 
-const arrow = { type: MarkerType.ArrowClosed, color: "var(--box-border)" };
+export const arrow = { type: MarkerType.ArrowClosed, color: "var(--box-border)" };
 const edge = (id, source, target) => ({
     id, source, target, type: "deletable",
     markerEnd: arrow
