@@ -6,6 +6,7 @@ import DeletableEdge from "./components/edges/DeleteableEdge.jsx";
 import Sidebar from "./components/Sidebar.jsx";
 import { palletteItems } from "./components/Sidebar.jsx";
 import { exportToPng, exportToSvg } from "./utils/exportImage.js"
+import { exportMarkdown } from "./utils/exportMarkdown.js";
 
 import { templates, arrow } from "./templates/index.js";
 
@@ -123,6 +124,17 @@ function Canvas() {
           }}
             onClick={() => exportToPng(nodes)}>
             export PNG
+          </button>
+
+    <button style={{
+            position: "absolute",
+            zIndex: 10,
+            top: 20,
+            right: 640,
+            padding: "6px 12px",
+          }}
+            onClick={() => exportMarkdown(nodes, edges, "Architecture")}>
+            export Markdown
           </button>
 
               <select value=""
