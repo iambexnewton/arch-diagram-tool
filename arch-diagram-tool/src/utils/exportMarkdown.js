@@ -63,7 +63,7 @@ export function buildMarkdown(nodes, edges, title = "Architecture") {
         list(entries, "_None. Every connected component has an incoming connection._"),
         "",
         "## End points",
-        "Componenys where the flow finishes (connections arrive, none leave):",
+        "Components where the flow finishes (connections arrive, none leave):",
         "",
         list(exits, "_None._"),
         "",
