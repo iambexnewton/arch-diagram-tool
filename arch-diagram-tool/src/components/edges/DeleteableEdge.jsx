@@ -8,7 +8,6 @@ export default function DeletableEdge({
     sourcePosition,
     targetPosition,
     selected,
-    style,
     markerEnd,
 }) {
     const { deleteElements } = useReactFlow();
@@ -23,8 +22,8 @@ export default function DeletableEdge({
         }
     )
     const handleDelete = (e) => {
-        e?.stopPropagnation?.();
-        deleteElements({ edges: [{ id }] }, [id, deleteElements])
+        e?.stopPropagation?.();
+        deleteElements({ edges: [{ id }] })
     }
 
     const edgeStyle= {

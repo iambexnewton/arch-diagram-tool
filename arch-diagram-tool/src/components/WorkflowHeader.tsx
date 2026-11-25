@@ -4,35 +4,28 @@ interface WorkflowHeaderProps {
   imageUrl?: string;
 }
 
+// Rendered inside the Toolbar, which supplies the background and text colour.
 export function WorkflowHeader({ title, subtitle, imageUrl }: WorkflowHeaderProps) {
   return (
-    <div style={{
-      position: 'absolute',
-      top: '20px',
-      left: '16%',
-      zIndex: 4,
-      pointerEvents: 'auto',
-      background: 'var(--header-background)',
-      padding: '16px 22px',
-      borderRadius: 'var(--border-radius-m)',
-      boxShadow: '0 4px 6px rgba(0, 0, 0, 0.05)',
-      fontFamily: 'sans-serif'
-    }}>
- {imageUrl && (
-        <img 
-          src={imageUrl} 
-          alt="Workflow Logo" 
+    <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+      {imageUrl && (
+        <img
+          src={imageUrl}
+          alt=""
           style={{
-            width: '40px',
-            height: '40px',
-            borderRadius: 'var(--border-radius-s)',
-            objectFit: 'cover',
-            border: '1px solid #edf2f7'
+            width: 40,
+            height: 40,
+            borderRadius: "var(--border-radius-s)",
+            objectFit: "cover",
           }}
         />
       )}
-      <h2 style={{ margin: 0, fontSize: '18px', color: 'var(--header-text)' }}>{title}</h2>
-      {subtitle && <p style={{ margin: '4px 0 0 0', fontSize: '13px', color: 'var(--header-text)' }}>{subtitle}</p>}
+      <div>
+        <h1 style={{ margin: 0, fontSize: 18 }}>{title}</h1>
+        {subtitle && (
+          <p style={{ margin: "2px 0 0", fontSize: 13, opacity: 0.85 }}>{subtitle}</p>
+        )}
+      </div>
     </div>
   );
 }

@@ -1,10 +1,10 @@
 import { useCallback, useState, useRef } from "react";
-import ReactFlow, { Background, Controls, addEdge, useNodesState, useEdgesState, ReactFlowProvider, useReactFlow, MarkerType } from "reactflow";
-import { WorkflowHeader } from './components/WorkflowHeader.tsx'
+import ReactFlow, { Background, Controls, addEdge, useNodesState, useEdgesState, ReactFlowProvider, useReactFlow } from "reactflow";
+import Toolbar from "./components/Toolbar.jsx";
 import { nodeTypes } from "./components/nodes/index.js"
 import DeletableEdge from "./components/edges/DeleteableEdge.jsx";
 import Sidebar from "./components/Sidebar.jsx";
-import { palletteItems } from "./components/Sidebar.jsx";
+import { palletteItems } from "./components/palette.js";
 import { exportToPng, exportToSvg } from "./utils/exportImage.js"
 import { exportMarkdown } from "./utils/exportMarkdown.js";
 
@@ -36,12 +36,14 @@ function Canvas() {
   }
 
   const onConnect = useCallback(
-    (params) => setEdges((eds) => addEdge({ ...params, type: "deletable", markerEnd: arrow}, eds), [setEdges]))
+    (params) => setEdges((eds) => addEdge({ ...params, type: "deletable", markerEnd: arrow }, eds)),
+    [setEdges]
+  )
 
   const onDragOver = useCallback((event) => {
     event.preventDefault();
     event.dataTransfer.dropEffect = "move";
-  })
+  }, [])
 
   const onDrop = useCallback((event) => {
     event.preventDefault();
@@ -71,101 +73,38 @@ function Canvas() {
   return (
     <div
       className={theme}
-      style={{ width: "100vw", height: "100vh", display: "flex", flexDirection: "column", background: "var(--canvas-bg)" }}>
-      <WorkflowHeader
-        className={theme}
+      style={{ width: "100vw", height: "100vh", display: "flex", flexDirection: "column", background: "var(--canvas-bg)" }}
+    >
+      <Toolbar
         title="Onboarding"
         subtitle="v1.2.0 - Active"
-
-      // imageUrl="./assets/react.svg"
+        theme={theme}
+        onThemeChange={setTheme}
+        onLoadTemplate={loadTemplate}
+        onExportPng={() => exportToPng(nodes)}
+        onExportSvg={() => exportToSvg(nodes)}
+        onExportMarkdown={() => exportMarkdown(nodes, edges, "Architecture")}
       />
 
       <div style={{ display: "flex", flex: 1, minHeight: 0 }}>
         <Sidebar />
 
-        <div ref={wrapperRef}
-
-          style={{ flex: 1, height: "100%", background: "var(--canvas-bg)" }}>
-
-
-          <select
-            value={theme}
-            onChange={(e) => setTheme(e.target.value)}
-            style={{
-              position: "absolute",
-              zIndex: 10,
-              top: 20,
-              right: 100,
-              padding: "6px 12px",
-            }}
-          >
-            <option value=''>Default Theme</option>
-            <option value='theme-brand1'>Brand 1 Theme</option>
-            <option value='theme-brand2'>Brand 2 Theme</option>
-          </select>
-
-      
-          <button style={{
-            position: "absolute",
-            zIndex: 10,
-            top: 20,
-            right: 260,
-            padding: "6px 12px",
-          }}
-            onClick={() => exportToSvg(nodes)}>
-            export SVG
-          </button>
-          <button style={{
-            position: "absolute",
-            zIndex: 10,
-            top: 20,
-            right: 380,
-            padding: "6px 12px",
-          }}
-            onClick={() => exportToPng(nodes)}>
-            export PNG
-          </button>
-
-    <button style={{
-            position: "absolute",
-            zIndex: 10,
-            top: 20,
-            right: 640,
-            padding: "6px 12px",
-          }}
-            onClick={() => exportMarkdown(nodes, edges, "Architecture")}>
-            export Markdown
-          </button>
-
-              <select value=""
-          onChange={(e) => loadTemplate(e.target.value)}
-          style={{position: 'absolute', zIndex: 10, top: 20, right: 500, padding: "6px 12px"}}
-          >
-<option value="" disabled>load template </option>
-{templates.map((t)=> (
-  <option key={t.id} value={t.id} >{t.name}</option>
-))}
-
-          </select>
-
+        <div ref={wrapperRef} style={{ flex: 1, position: "relative", background: "var(--canvas-bg)" }}>
           <ReactFlow
-
-            id={"react-flow_viewport"}
             nodes={nodes}
             edges={edges}
             onNodesChange={onNodesChange}
             onEdgesChange={onEdgesChange}
             onConnect={onConnect}
-            // onInit={handleInit}
             nodeTypes={nodeTypes}
             edgeTypes={edgeTypes}
-            nodesDraggable={true}
             onDragOver={onDragOver}
             onDrop={onDrop}
             fitView
-          />
-          <Background />
-          <Controls />
+          >
+            <Background />
+            <Controls />
+          </ReactFlow>
         </div>
       </div>
     </div>

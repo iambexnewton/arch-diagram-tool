@@ -28,8 +28,8 @@ export default function BoxNode({ id, data, selected }) {
 
     const handleDelete = useCallback((e) => {
         e?.stopPropagation?.()
-        deleteElements({ nodes: [{ id }] }, [id, deleteElements])
-    })
+        deleteElements({ nodes: [{ id }] })
+    }, [id, deleteElements])
   
     return (
         <div style={{

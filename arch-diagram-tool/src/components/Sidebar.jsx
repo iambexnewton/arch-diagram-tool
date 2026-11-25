@@ -1,10 +1,4 @@
-import { nodeTypes } from "./nodes/index.js"
-
-export const palletteItems = [
-    { type: "box", label: 'Box' },
-    { type: "diamond", label: 'Diamond' },
-    { type: "database", label: 'Database' },
-]
+import { palletteItems } from "./palette.js"
 
 export default function Sidebar() {
     const onDragStart = (event, nodeType) => {
