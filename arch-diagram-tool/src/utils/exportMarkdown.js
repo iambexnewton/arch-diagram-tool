@@ -14,10 +14,10 @@ function arrowOf(edge) {
 
 function mermaidLine(edge, from, to) {
     const dashed = !!edge.data?.dashed;
-    if (edge.markerStart && edge.markerEnd) return `${from} ${dashed} ? "< - . - >" : "< - - >" ${to}`;
-    if (edge.markerStart) return `${to} ${dashed ? "- . ->" : "- ->"} ${from}`;
-    if (edge.markerEnd) return `${from} ${dashed ? "- . ->" : "- ->"} ${to}`;
-    return `${from} ${dashed ? "- . -" : "- - -"} ${to}`;
+    if (edge.markerStart && edge.markerEnd) return `${from} ${dashed} ? "<-.->" : "<-->" ${to}`;
+    if (edge.markerStart) return `${to} ${dashed ? "-.->" : "-->"} ${from}`;
+    if (edge.markerEnd) return `${from} ${dashed ? "-.->" : "-->"} ${to}`;
+    return `${from} ${dashed ? "-.-" : "---"} ${to}`;
 }
 
 export function buildMarkdown(nodes, edges, title = "Architecture") {
